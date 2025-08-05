@@ -1,4 +1,4 @@
-<!-- src/routes/login/+page.svelte -->
+
 <script>
   import { supabase } from '$lib/supabase';
   let email = '';
