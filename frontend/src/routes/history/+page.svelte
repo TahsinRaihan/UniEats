@@ -1,4 +1,4 @@
-<!-- src/routes/history/+page.svelte -->
+
 <script>
   import { supabase } from '$lib/supabase';
   import { onMount } from 'svelte';
