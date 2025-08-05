@@ -1,15 +1,11 @@
-// src/lib/stores/notifications.js
+
 import { writable } from 'svelte/store';
 
 function createNotifications() {
   const { subscribe, update } = writable([]);
   let counter = 0;
 
-  /**
-   * message: string
-   * type: 'info' | 'success' | 'error'
-   * meta: arbitrary object, e.g. { kind: 'scheduled', orderId: 5 }
-   */
+ 
   function notify(message, type = 'info', meta = {}) {
     const id = ++counter;
     const timestamp = new Date().toISOString();
