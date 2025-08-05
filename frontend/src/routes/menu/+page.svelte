@@ -1,4 +1,4 @@
-<!-- src/routes/menu/+page.svelte -->
+
 <script>
   import { onMount } from 'svelte';
   import { supabase } from '$lib/supabase';
@@ -15,7 +15,7 @@
     if (q !== null) search = q;
   }
 
-  // map dish names → your static filenames
+ 
   const imageMap = {
     'Chicken Biryani':        '/images/chicken-biryani.jpg',
     'Polao Rice':             '/images/polao-rice.jpg',
