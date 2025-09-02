@@ -67,6 +67,7 @@
         .insert({ user_id: user.id, menu_item_id: item.id, quantity: 1 });
     }
     notifications.notify(`✅ Added ${item.name} to cart`, 'success');
+    invalidate('/cart'); // Invalidate the cart page to trigger a data reload
   }
 
   async function placeOrder() {
@@ -80,6 +81,17 @@
     const dt = new Date(orderTime);
     if (dt <= new Date()) {
       return notifications.notify('Pick a future time', 'error');
+    }
+
+    // Get the hour of the selected time
+    const selectedHour = dt.getHours();
+
+    // Define operating hours (8 AM to 5 PM)
+    const openingHour = 8;
+    const closingHour = 17; // 5 PM
+
+    if (selectedHour < openingHour || selectedHour >= closingHour) {
+      return notifications.notify(`Cafeteria is open from ${openingHour} AM to ${closingHour} PM. Please select a time within this window.`, 'error');
     }
 
     const counter = Math.floor(Math.random() * 3) + 1;
