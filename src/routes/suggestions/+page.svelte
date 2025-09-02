@@ -15,8 +15,8 @@
 </script>
 
 <div class="min-h-screen p-8">
-  <div class="max-w-4xl mx-auto w-full bg-white p-8 rounded-lg shadow-xl">
-    <div class="text-center mb-8 p-6 bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-lg shadow-md">
+  <div class="max-w-4xl mx-auto w-full bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-lg shadow-2xl transform transition-all duration-300 hover:scale-105">
+    <div class="text-center mb-8 p-6 bg-gradient-to-r from-emerald-500 to-green-600 text-white rounded-lg shadow-md">
       <h1 class="text-4xl font-extrabold mb-2">💡 Share Your Brilliant Ideas!</h1>
       <p class="text-lg opacity-90">
         Your creativity fuels UniEats. Suggest new items, features, or improvements!
@@ -102,7 +102,7 @@
     <div>
       <button
         on:click={propose}
-        class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-lg font-medium rounded-md text-white bg-gradient-to-r from-emerald-600 to-green-700 hover:from-emerald-700 hover:to-green-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 shadow-lg transform transition-all duration-300 hover:scale-105"
       >
         Submit Your Suggestion
       </button>

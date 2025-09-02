@@ -1,7 +1,6 @@
 
-import * as feedbackService from '../services/feedbackService';
+import * as feedbackService from '$lib/services/feedbackService';
 
-export async function submitFeedback(content: string, userId?: string) {
-  const { error } = await feedbackService.submitFeedback(content, userId);
-  return { error };
+export async function submitFeedback(content: string) {
+  return await feedbackService.submitFeedback(content, userId);
 }

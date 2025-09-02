@@ -1,23 +1,31 @@
-// src/routes/feedback/+page.server.ts
+import * as feedbackServiceModule from '../../lib/services/feedbackService';
 import { fail } from '@sveltejs/kit';
-import * as feedbackController from '$lib/controllers/feedbackController';
 
 export const actions = {
-  default: async ({ request, locals }) => {
-    const form = await request.formData();
-    const content = String(form.get('content') || '').trim();
-    if (!content) return fail(400, { message: 'Content is required.' });
+    default: async ({ request }) => {
+        const data = await request.formData();
+        const feedbackText = data.get('content')?.toString();
+        console.log('Received feedbackText:', feedbackText);
 
-    const userId = locals.user?.id;
+        if (!feedbackText) {
+            return fail(400, {
+                feedbackText,
+                error: 'Feedback text is required.'
+            });
+        }
 
-    if (!userId) {
-      return fail(401, { message: 'User not authenticated.' });
+        try {
+            await feedbackServiceModule.submitFeedback(feedbackText);
+            return {
+                success: true,
+                message: 'Thank you for your feedback!'
+            };
+        } catch (error) {
+            console.error('Error submitting feedback:', error);
+            return fail(500, {
+                feedbackText,
+                error: 'Failed to submit feedback.'
+            });
+        }
     }
-
-    const { error } = await feedbackController.submitFeedback(content, userId);
-    if (error) {
-      return fail(500, { message: error.message || 'Failed to submit feedback.' });
-    }
-    return { success: true };
-  }
 };
